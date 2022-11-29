@@ -14,7 +14,7 @@ classdef DiscreteModel
             obj.y = zeros(length(den), 1);
         end
         
-        function [obj, res] = forward(obj, u)
+        function [obj, res, nextRes] = forward(obj, u)
             if length(obj.u) > 1
                 for j = length(obj.u):-1:2
                     obj.u(j) = obj.u(j - 1);
@@ -34,6 +34,8 @@ classdef DiscreteModel
             else
                 obj.y = res;
             end
+            
+            nextRes = (obj.num)*(obj.u) - (obj.den)*(obj.y);
         end
     end
 end
