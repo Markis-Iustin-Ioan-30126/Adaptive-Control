@@ -16,7 +16,7 @@ classdef Activation < Layer
             output = obj.activation(input);
         end
         
-        function [output_gradient, obj] = backward(obj, gradient, learning_rate)
+        function [output_gradient, obj] = backward(obj, gradient)
             output_gradient = gradient.*obj.activation_derivative(obj.input)';
         end
     end
