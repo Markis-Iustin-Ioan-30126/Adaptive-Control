@@ -20,9 +20,9 @@ classdef Dense < Layer
             obj.learning_rate = p.Results.LearningRate;
             obj.momentum = p.Results.Momentum;
             obj.allow_bias = p.Results.AllowBias;
-            obj.weights = normrnd(0, 1, number_of_outputs, number_of_inputs);
+            obj.weights = rands(number_of_outputs, number_of_inputs);
             obj.previous_weights = zeros(number_of_outputs, number_of_inputs);
-            obj.biases = normrnd(0, 1, number_of_outputs, 1);  
+            obj.biases = rands(number_of_outputs, 1);  
             obj.previous_biases = zeros(number_of_outputs, 1);
         end
   
