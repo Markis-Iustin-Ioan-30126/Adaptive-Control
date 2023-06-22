@@ -1,13 +1,13 @@
 classdef LinearDiscreteModel   
-    properties
-        theta
+    properties (Access = private)
+        theta 
         phi
         nd
         na
         buffer
     end
     
-    methods
+    methods 
         function obj = LinearDiscreteModel(num ,den, nd)
             obj.theta = [den(2:end) num]';
             if den(1) ~= 1
@@ -30,6 +30,13 @@ classdef LinearDiscreteModel
             output = obj.theta'*obj.phi;
             
             obj.phi(1:obj.na) = [-output; obj.phi(1:obj.na - 1)];
+        end
+        
+        function obj = changeParameters(obj, num, den)
+            obj.theta = [den(2:end) num]';
+            if den(1) ~= 1
+                obj.theta = obj.theta/den(1);
+            end
         end
     end
 end
