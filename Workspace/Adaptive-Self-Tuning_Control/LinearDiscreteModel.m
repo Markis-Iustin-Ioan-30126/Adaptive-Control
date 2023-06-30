@@ -38,6 +38,10 @@ classdef LinearDiscreteModel
                 obj.theta = obj.theta/den(1);
             end
         end
+        
+        function [obj, parameters] = getParameters(obj)
+            parameters = obj.theta;
+        end
     end
 end
 
